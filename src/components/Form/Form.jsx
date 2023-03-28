@@ -28,6 +28,22 @@ const validationSchema = yup.object({
     ),
 });
 
+const sendForm = (values) => {
+  axios({
+    method: "post",
+    url: "https://webhook-dot-subtle-odyssey-359821.nn.r.appspot.com/register",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: values,
+  })
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 const FormFormik = () => {
   const [submittedForm, setSubmittedForm] = useState(false);
   return (
@@ -40,21 +56,7 @@ const FormFormik = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          axios({
-            method: "post",
-            url: "https://webhook-dot-subtle-odyssey-359821.nn.r.appspot.com/register",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            data: values,
-          })
-            .then(function (response) {
-              console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-
+          sendForm(values);
           resetForm();
           setSubmittedForm(true);
           setTimeout(() => {

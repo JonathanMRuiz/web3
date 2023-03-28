@@ -1,0 +1,7 @@
+.form {
+  background-image: linear-gradient(rgba(15, 15, 13, 0), #0f0f0d),
+    url(https://www.gunny.games/static/media/connect-with-us-bg.3e80052e2398008d8452.webp);
+  background-position: top;
+  background-size: cover;
+  overflow: hidden;
+}
